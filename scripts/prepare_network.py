@@ -1944,9 +1944,8 @@ if __name__ == "__main__":
             logger.info("Setting time dependent emission prices according spot market price")
             add_emission_prices_t(n) 
 
-    # ll_type, factor = snakemake.wildcards.ll[0], snakemake.wildcards.ll[1:]
     ll = snakemake.wildcards.ll
-    set_transmission_limit(n, ll, year, elec_costs, Nyears)
+    set_transmission_limit(n, ll, year, elec_costs)
 
     set_line_nom_max(
         n,
