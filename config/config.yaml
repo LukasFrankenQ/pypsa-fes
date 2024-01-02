@@ -22,32 +22,32 @@ scenario:
   simpl:
   - ''
   ll:  # allowed transmission line volume expansion, can be any float >= 1.0 with a prefix v|c (today) or "copt"
-  - copt
+  - hnd
   fes: # Future energy scenario considered (see https://www.nationalgrideso.com/future-energy/future-energy-scenarios)
   # - 'FS' # Falling Short
   - 'LW' # Leading the Way 
   year: # year of Future Energy Scenario modelled
   # - 2025
-  - 2030
-  # - 2035
+  # - 2030
+  - 2035
   # - 2040
-  # - 2045
+  - 2045
   # - 2050
   flexopts:
+  - "int-tank-ss-v2g"
+  - "go-tank-ss-v2g"
+  - "int-cosy-ss-v2g"
+  - "int-tank-v2g"
+  - "int-tank-ss"
+  - "tank-ss"
+  - "int-ss-v2g"
   - ""
   - "ss"
+  - "go"
+  - "int"
   - "cosy"
   - "tank"
-  - "go"
   - "int-v2g"
-  - "int"
-  - "int-ss-v2g"
-  - "tank-ss-v2g"
-  - "int-tank-ss"
-  - "int-tank-v2g"
-  - "int-cosy-ss-v2g"
-  - "go-tank-ss-v2g"
-  - "int-tank-ss-v2g"
   
   opts: # only relevant for PyPSA-Eur
   # - 'morocco' # adds Xlinks project; interconnection to Morocco with renewable generation
