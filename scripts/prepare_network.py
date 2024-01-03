@@ -842,6 +842,7 @@ def add_heat_pump_load(n, flexopts, costs):
     
     elif share_smart_tariff > 0. and heatflex == 'tank':
 
+
         logger.info("Adding heat flexibility adding a hot water tank.")
 
         standing_loss = flex_config["water_tank_standing_loss"]
@@ -853,6 +854,7 @@ def add_heat_pump_load(n, flexopts, costs):
             .mean()
             .max()
             .set_axis(nodes + ' hot water tanks')
+            * smart_share
         )
 
         n.madd(
@@ -860,7 +862,7 @@ def add_heat_pump_load(n, flexopts, costs):
             nodes + " hot water tanks",
             bus=heat_demand_spatial.nodes,
             carrier="hot water tank",
-            p_nom=p_nom*smart_share,
+            p_nom=p_nom,
             max_hours=max_hours,
             e_cyclic=True,
             standing_loss=standing_loss,
