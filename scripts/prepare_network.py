@@ -984,10 +984,9 @@ def add_bev(n, flexopts):
 
         logger.info("Assuming smart charging is either off or all cars have it.")
 
-        smart_share = 1.
         v2g_share = get_v2g_share(snakemake.wildcards.fes, year)
 
-        smart_share = flex_config["ev_smart_tariff_share"] or smart_share
+        smart_share = flex_config["ev_smart_tariff_share"]
         v2g_share = flex_config["v2g_share"] or v2g_share
 
         if v2g_share > 0 and "v2g" in flexopts:
