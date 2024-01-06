@@ -302,9 +302,8 @@ def set_transmission_limit(n, ll, year, costs):
     investment = outlook.loc[:year, ll].sum() * 1e6
 
     logger.info(f"Investment limit for transmission expansion set to £{investment*1e-9:.2f}bn")
-    logger.info(f"Assuming {t_scen} transmission investment scenario.")
-    logger.info(f"Assuming Sterling Euro conversion ration 1.15.")
 
+    # convert to EUR
     investment *= 1.15
 
     # only lines within GB are eligible for expansion
@@ -318,15 +317,25 @@ def set_transmission_limit(n, ll, year, costs):
     )
     lines_s_nom = n.lines.s_nom.where(n.lines.type == "", _lines_s_nom)
 
+    update_transmission_costs(n, costs)
+
     total_cost = lines_s_nom @ n.lines["capital_cost"]
 
-    update_transmission_costs(n, costs)
+    annuity = calculate_annuity(
+        costs.at["HVAC overhead", "lifetime"],
+        0.07 + costs.at["HVAC overhead", "FOM"] / 100
+    )
+
+    expansion_factor = 1 + \
+        investment / \
+        (total_cost / annuity * costs.at["HVAC overhead", "lifetime"])
 
     n.lines.loc[gb_mask, "s_nom_min"] = lines_s_nom
     n.lines.loc[gb_mask, "s_nom_extendable"] = True
 
-    logger.warning("Assuming that n.lines['capital_cost'] is in TEur/MW!")
-    rhs = investment * 1e-3 + total_cost
+    rhs = total_cost * expansion_factor
+    logger.info(f"Assuming {t_scen} transmission investment scenario. Expansion factor {expansion_factor:.2f}.")
+    logger.info(f"Assuming Sterling Euro conversion ration 1.15.")
     n.add(
         "GlobalConstraint",
         f"transmission_expansion_limit",
