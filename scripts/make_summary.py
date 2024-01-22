@@ -768,7 +768,7 @@ def calculate_flex_statistics(n, label, flex_statistics):
                 "onwind",
                 "offwind-ac",
                 "offwind-dc",
-                "ror"
+                "ror",
             ]] + [
             get_transmission_capacity(n),
             get_distribution_capacity(n).rename("distribution_p_nom")] +

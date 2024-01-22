@@ -22,32 +22,33 @@ scenario:
   simpl:
   - ''
   ll:  # allowed transmission line volume expansion, can be any float >= 1.0 with a prefix v|c (today) or "copt"
-  - hnd
+  # - 'hnd'
+  - 'historic'
   fes: # Future energy scenario considered (see https://www.nationalgrideso.com/future-energy/future-energy-scenarios)
-  # - 'FS' # Falling Short
-  - 'LW' # Leading the Way 
+  - 'FS' # Falling Short
+  # 'LW' # Leading the Way 
   year: # year of Future Energy Scenario modelled
-  # - 2025
-  # - 2030
+  - 2025
+  - 2030
   - 2035
-  # - 2040
+  - 2040
   - 2045
-  # - 2050
+  - 2050
   flexopts:
   - "int-tank-ss-v2g"
-  - "go-tank-ss-v2g"
-  - "int-cosy-ss-v2g"
-  - "int-tank-v2g"
-  - "int-tank-ss"
-  - "tank-ss"
-  - "int-ss-v2g"
+  # - "go-tank-ss-v2g"
+  # - "int-cosy-ss-v2g"
+  # - "int-tank-v2g"
+  # - "int-tank-ss"
+  # - "tank-ss"
+  # - "int-ss-v2g"
   - ""
-  - "ss"
-  - "go"
-  - "int"
-  - "cosy"
-  - "tank"
-  - "int-v2g"
+  # - "ss"
+  # - "go-v2g"
+  # - "int"
+  # - "cosy"
+  # - "tank"
+  # - "int-v2g"
   
   opts: # only relevant for PyPSA-Eur
   # - 'morocco' # adds Xlinks project; interconnection to Morocco with renewable generation
@@ -96,7 +97,7 @@ flexibility:
   water_tank_max_hours: 12 # Decision based on Lizana et al. 2023 Fig 12 b1
 
   # EV flexibility parameters
-  ev_smart_tariff_share: false # share of people on smart charging tariff (if 'false' value is taken from FES data)
+  ev_smart_tariff_share: 1. # share of people on smart charging tariff (if 'false' value is taken from FES data)
   v2g_share: false # share of people with v2g (if false taken from FES data)
   go_tariff_opt_out_rate: 0.1 # share of people not charging during 12 am - 4 am window
   int_tariff_opt_out_rate: 0.1 # share of people opting out of intelligent charging

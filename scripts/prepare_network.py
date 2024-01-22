@@ -330,16 +330,16 @@ def set_transmission_limit(n, ll, year, costs):
         investment / \
         (total_cost / annuity * costs.at["HVAC overhead", "lifetime"])
 
-    n.lines.loc[gb_mask, "s_nom_min"] = lines_s_nom
+    n.lines.loc[:, "s_nom_min"] = lines_s_nom
     n.lines.loc[gb_mask, "s_nom_extendable"] = True
 
     rhs = total_cost * expansion_factor
-    logger.info(f"Assuming {t_scen} transmission investment scenario. Expansion factor {expansion_factor:.2f}.")
+    logger.info(f"Assuming {t_scen} transmission investment scenario. Expansion factor {expansion_factor:.4f}.")
     logger.info(f"Assuming Sterling Euro conversion ration 1.15.")
     n.add(
         "GlobalConstraint",
-        f"transmission_expansion_limit",
-        type=f"transmission_expansion_cost_limit",
+        f"lc_limit",
+        type="transmission_c_limit",
         sense="<=",
         constant=rhs,
         carrier_attribute="AC",
