@@ -623,6 +623,9 @@ def add_heat_pump_load(n, flexopts, costs):
 
     smart_share = flex_config["heat_smart_tariff_share"]
 
+    print('smart_share')
+    print(smart_share)
+
     intraday_profiles = pd.read_csv(snakemake.input["profile_boiler_heating"], index_col=0)
 
     daily_space_heat_demand = (
@@ -850,7 +853,6 @@ def add_heat_pump_load(n, flexopts, costs):
         )
     
     elif share_smart_tariff > 0. and heatflex == 'tank':
-
 
         logger.info("Adding heat flexibility adding a hot water tank.")
 

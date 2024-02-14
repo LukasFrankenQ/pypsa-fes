@@ -22,11 +22,11 @@ scenario:
   simpl:
   - ''
   ll:  # allowed transmission line volume expansion, can be any float >= 1.0 with a prefix v|c (today) or "copt"
-  # - 'hnd'
-  - 'historic'
+  - 'hnd'
+  # - 'historic'
   fes: # Future energy scenario considered (see https://www.nationalgrideso.com/future-energy/future-energy-scenarios)
-  - 'FS' # Falling Short
-  # 'LW' # Leading the Way 
+  # - 'FS' # Falling Short
+  - 'LW' # Leading the Way 
   year: # year of Future Energy Scenario modelled
   - 2025
   - 2030
