@@ -44,11 +44,11 @@ scenario:
   # - "int-ss-v2g"
   - ""
   # - "ss"
-  # - "go-v2g"
+  - "go-v2g"
   # - "int"
-  # - "cosy"
-  # - "tank"
-  # - "int-v2g"
+  - "cosy"
+  - "tank"
+  - "int-v2g"
   
   opts: # only relevant for PyPSA-Eur
   # - 'morocco' # adds Xlinks project; interconnection to Morocco with renewable generation
