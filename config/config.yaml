@@ -21,12 +21,12 @@ foresight: overnight # options are overnight, myopic, perfect (perfect is not ye
 scenario:
   simpl:
   - ''
-  ll:  # allowed transmission line volume expansion, can be any float >= 1.0 with a prefix v|c (today) or "copt"
-  - 'hnd'
-  # - 'historic'
+  ll:  # allowed transmission line volume expansion, can be any float >= 1.0 with a prefix v|c (today) or "cop"
+  # - 'hnd'
+  - 'historic'
   fes: # Future energy scenario considered (see https://www.nationalgrideso.com/future-energy/future-energy-scenarios)
-  # - 'FS' # Falling Short
-  - 'LW' # Leading the Way 
+  - 'FS' # Falling Short
+  # - 'LW' # Leading the Way 
   year: # year of Future Energy Scenario modelled
   - 2025
   - 2030
@@ -44,11 +44,11 @@ scenario:
   # - "int-ss-v2g"
   - ""
   # - "ss"
-  - "go-v2g"
+  # - "go-v2g"
   # - "int"
-  - "cosy"
-  - "tank"
-  - "int-v2g"
+  # - "cosy"
+  # - "tank"
+  # - "int-v2g"
   
   opts: # only relevant for PyPSA-Eur
   # - 'morocco' # adds Xlinks project; interconnection to Morocco with renewable generation
